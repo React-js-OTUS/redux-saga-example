@@ -1,11 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { AppState, ExtraParams } from 'src/store/index';
-
-export const fetchTodos = createAsyncThunk('todos/fetchTodos', async (arg: string, thunkAPI) => {
-  console.log({ arg, thunkAPI });
-  const response = await fetch(`${(thunkAPI.extra as ExtraParams).url}todos`).then((res) => res.json());
-  return response;
-});
+import { createSlice } from '@reduxjs/toolkit';
+import { AppState } from 'src/store/index';
 
 const initialState: {
   todos: unknown[];
@@ -20,22 +14,21 @@ const initialState: {
 const todosSlice = createSlice({
   name: 'todos',
   initialState,
-  reducers: {},
-  extraReducers(builder) {
-    builder
-      .addCase(fetchTodos.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchTodos.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.todos.push(...action.payload);
-      })
-      .addCase(fetchTodos.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error as Error;
-      });
+  reducers: {
+    fetchTodos: (state) => {
+      state.status = 'loading';
+    },
+    fetchTodosSuccess: (state, action: { payload: unknown[] }) => {
+      state.status = 'succeeded';
+      state.todos.push(...action.payload);
+    },
+    fetchTodosFailure: (state, action: { payload: Error }) => {
+      state.status = 'failed';
+      state.error = action.payload;
+    },
   },
 });
+
 export const todosActions = todosSlice.actions;
 
 export const todosSelectors = {

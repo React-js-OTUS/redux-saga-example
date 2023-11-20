@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppState, AppThunk } from 'src/store/index';
+import { AppState } from 'src/store/index';
 
 const tokenSlice = createSlice({
   name: 'token',
@@ -10,16 +10,6 @@ const tokenSlice = createSlice({
   },
 });
 export const tokenActions = tokenSlice.actions;
-
-const genWithSavingThunk = (): AppThunk => (dispatch, getState) => {
-  dispatch(tokenActions.gen());
-  const state = getState();
-  localStorage.setItem('token', state.token);
-};
-
-export const tokenThunks = {
-  genWithSaving: genWithSavingThunk,
-};
 
 export const tokenSelectors = {
   get: (state: AppState): AppState['token'] => {

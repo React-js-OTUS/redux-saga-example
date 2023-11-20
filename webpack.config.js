@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-const port = 2003;
+const port = 2004;
 const dist = path.join(__dirname, 'dist');
 const src = path.join(__dirname, 'src');
 const host = 'localhost';

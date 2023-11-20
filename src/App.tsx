@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { store } from 'src/store';
 import { TokenGenerator } from 'src/components/TokenGenerator';
 import { TokenView } from 'src/components/TokenView';
-import { TokenGeneratorWithSaving } from 'src/components/TokenGeneratorWithSaving';
 import { TodosFetch } from 'src/components/TodosFetch';
 import { TodosView } from 'src/components/TodosView';
 import { UserView } from 'src/components/UserView';
@@ -21,7 +20,6 @@ function App() {
         <CountListenerUseSelector />
         <h3>token</h3>
         <TokenGenerator />
-        <TokenGeneratorWithSaving />
         <TokenView />
         <h3>todos</h3>
         <TodosFetch />
