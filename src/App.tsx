@@ -9,6 +9,7 @@ import { UserView } from 'src/components/UserView';
 import { CountEditorUseDispatch } from 'src/components/CountEditorUseDispatch';
 import { CountListenerUseSelector } from 'src/components/CountListenerUseSelector';
 import s from './App.sass';
+import { RaceExample } from './components/RaceExample';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <TodosView />
         <h3>user</h3>
         <UserView />
+        <h3>Timeout user</h3>
+        <RaceExample />
       </Provider>
     </div>
   );
