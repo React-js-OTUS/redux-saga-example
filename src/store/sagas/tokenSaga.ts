@@ -1,9 +1,9 @@
-import { select, takeEvery } from 'redux-saga/effects';
+import { call, select, takeEvery } from 'redux-saga/effects';
 import { tokenActions, tokenSelectors } from 'src/store/token';
 
 export function* setToken(): Generator {
   const token = (yield select(tokenSelectors.get)) as string;
-  localStorage.setItem('token', token || '');
+  yield call([localStorage, 'setItem'], 'token', token || '');
 }
 
 export function* tokenSaga() {
